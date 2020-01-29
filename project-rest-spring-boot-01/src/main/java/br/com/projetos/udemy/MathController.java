@@ -14,7 +14,7 @@ public class MathController {
 			throw new Exception();
 		}
 		
-		Double sum = (double) (convertToDouble(numberOne) + convertToDouble(numberTwo));
+		Double sum = (convertToDouble(numberOne) + convertToDouble(numberTwo));
 		return sum;
 		
 	}
@@ -23,7 +23,8 @@ public class MathController {
 		if (strNumber == null) {
 			return 0D;
 		}
-		String number = strNumber.replaceAll(",", ".");
+		
+		String number = replaceAll(strNumber);
 		if (isNumeric(strNumber)) {
 			return Double.parseDouble(number);
 		}
@@ -36,7 +37,11 @@ public class MathController {
 			return false;
 		}
 		
-		String number = strNumber.replaceAll(",", ".");
+		String number = replaceAll(strNumber);
 		return number.matches("[-+]?[0-9]*\\.?[0-9]+");
+	}
+
+	private String replaceAll(String strNumber) { 
+		return strNumber.replaceAll(",", ".");
 	}
 }
